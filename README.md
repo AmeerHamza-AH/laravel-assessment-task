@@ -50,9 +50,13 @@
 ### 6. Spin Wheel Application
 
 - **Task:** Develop a spin wheel feature API's with specific business rules.
+- **Ue Spin API:** Retailer use free spin and win -> 100. then add to wallet and generate transaction.
+- **Buy Spin API:** Retailer after using free spin and then buy spin -> 200. then deduct to wallet and generate transaction.
+- **Spin Histroy API for self:** 
+- **Spin Histroy API for admin:** 
 - **Details:**
     - **Free Spins:** Allow each retailer to have 3 free spins per day.
-    - **Purchased Spins:** After using the free spins, retailers can buy additional spins. Each purchased spin grants one more chance.
+    - **Purchased Spins:** After using the free spins, retailers can buy additional spins. Each purchased spin grants one more chance with 200.
     - **Transaction Handling:** When a retailer spins the wheel:
         - Add balance to the retailer's wallet.
         - Generate a wallet transaction with the following fields:
