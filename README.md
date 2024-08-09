@@ -1,66 +1,72 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+    <a href="https://laravel.com" target="_blank">
+        <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
+    </a>
 </p>
 
-## About Laravel
+<p align="center">
+    <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+    <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+    <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+    <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# Laravel Developer Assessment Task
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Overview
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+> Welcome to the Laravel Developer Assessment Task provided by SpeedForce Digital. This task is designed to evaluate your proficiency with Laravel and related packages. You will build a small Laravel application incorporating user authentication, role management, rate limiting, and a spin wheel feature.
 
-## Learning Laravel
+## Requirements
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 1. Project Setup
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Task:** Create a new Laravel 11 project.
+- **Details:** Configure the environment and set up the database connection.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 2. Authentication with Laravel Sanctum
 
-## Laravel Sponsors
+- **Task:** Implement API authentication using Laravel Sanctum.
+- **Details:** Ensure users can register, log in, and log out via API endpoints. Secure API routes to require authentication.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 3. Rate Limiting by IP
 
-### Premium Partners
+- **Task:** Implement rate limiting to restrict users to a maximum of 5 API requests per minute from the same IP address.
+- **Details:** Use Laravel’s rate limiting features to enforce this rule.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### 4. Role Management with Laravel Spatie
 
-## Contributing
+- **Task:** Set up role management using Laravel Spatie's Role and Permission package.
+- **Details:** Define and manage three roles: `Admin`, `Wholesaler`, and `Retailer`. Ensure only users with the `Retailer` role can access the spin wheel functionalities.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 5. User Seeder
 
-## Code of Conduct
+- **Task:** Create a seeder to populate the database with users.
+- **Details:** Seed the database with:
+    - 17 users with the `Wholesaler` role
+    - 33 users with the `Retailer` role
+    - 5 users with the `Admin` role
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 6. Spin Wheel Application
 
-## Security Vulnerabilities
+- **Task:** Develop a spin wheel feature with specific business rules.
+- **Details:**
+    - **Free Spins:** Allow each retailer to have 3 free spins per day.
+    - **Purchased Spins:** After using the free spins, retailers can buy additional spins. Each purchased spin grants one more chance.
+    - **Transaction Handling:** When a retailer spins the wheel:
+        - Add balance to the retailer's wallet.
+        - Generate a wallet transaction with the following fields:
+            - `transaction_id` (format: `speedforce-year-12SD2U3HHH`)
+            - `user_id`
+            - `amount`
+            - `source`
+            - `type` (either `addition` or `deduction`)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
+> Submission
+- **Please submit your completed task**  by pushing the code to a GitHub repository and sharing the repository link with us. Ensure that your code is well-organized, follows best practices, and includes clear documentation.
+---
 
-## License
+Thank you for participating in the assessment task. We look forward to reviewing your submission. If you have any questions, please feel free to reach out.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
