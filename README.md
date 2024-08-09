@@ -49,7 +49,7 @@
 
 ### 6. Spin Wheel Application
 
-- **Task:** Develop a spin wheel feature with specific business rules.
+- **Task:** Develop a spin wheel feature API's with specific business rules.
 - **Details:**
     - **Free Spins:** Allow each retailer to have 3 free spins per day.
     - **Purchased Spins:** After using the free spins, retailers can buy additional spins. Each purchased spin grants one more chance.
